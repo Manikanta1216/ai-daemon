@@ -1,0 +1,43 @@
+# ============================================
+# JARVIS AI — Dependencies
+# ============================================
+
+# --- Core ---
+pyttsx3==2.90
+SpeechRecognition==3.8.1
+PyAudio
+
+# --- Computer Vision ---
+opencv-contrib-python==4.8.1.78
+numpy==1.26.4
+Pillow==10.4.0
+
+# --- System Automation ---
+PyAutoGUI==0.9.53
+PyGetWindow==0.0.9
+psutil==5.8.0
+pyperclip==1.8.2
+
+# --- Web & API ---
+requests==2.26.0
+
+# --- LLM APIs ---
+# Groq uses REST (no SDK needed)
+# Optional: Google Gemini SDK
+google-generativeai>=0.4.0
+
+# --- Environment ---
+python-dotenv>=1.0.0
+
+# --- WhatsApp ---
+pywhatkit
+
+# --- Misc ---
+pyjokes==0.6.0
+beautifulsoup4==4.10.0
+
+# --- Existing project deps ---
+pytube==11.0.1
+wikipedia==1.4.0
+selenium
+pytesseract
