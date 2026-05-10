@@ -163,13 +163,21 @@ class JarvisBrain:
         # Perform face recognition
         self.speak("Initiating face authentication. Please look at the camera.")
 
+        # Stop monitor during active auth to avoid camera/classifier contention
+        self.stop_monitor()
+        time.sleep(0.5)  # Allow camera to release
+
         try:
             from face_recognition_module import authenticate
             result = authenticate()
         except Exception as e:
             logger.error(f"Face auth error: {e}")
             self.speak("Face recognition system error. Access denied.")
+            self.start_monitor() # Resume monitor
             return False
+
+        # Restart monitor
+        self.start_monitor()
 
         if result.get("authenticated"):
             user = result["user"]
@@ -184,18 +192,50 @@ class JarvisBrain:
             return True
         else:
             reason = result.get("reason", "Unknown")
-            self.speak(f"Access denied. {reason}")
             logger.warning(f"Authentication failed: {reason}")
+            
+            self.speak(f"I couldn't recognize your face. Would you like to re-authenticate or register fresh?")
+            choice = self.listen()
+            
+            if choice and ("register" in choice.lower() or "fresh" in choice.lower()):
+                self.speak("Understood. Let's start a fresh registration. What is your name?")
+                name = self.listen()
+                if name:
+                    # Clean existing data first to ensure "no cache issues"
+                    try:
+                        from reset_face_data import reset_all_face_data
+                        reset_all_face_data()
+                    except ImportError:
+                        pass
+                    
+                    self.speak(f"Registering {name}. Please look at the camera.")
+                    from face_recognition_module import live_register_face
+                    if live_register_face(name):
+                        self.speak(f"Perfect. You are now registered as {name}.")
+                        return self.authenticate_user() # Try again now that registered
+                return False
+            
+            elif choice and ("re-authenticate" in choice.lower() or "try again" in choice.lower() or "recognize" in choice.lower()):
+                self.speak("Understood. Retrying recognition.")
+                return self.authenticate_user()
+            
+            self.speak(f"Access denied. {reason}")
             return False
+
 
     # ====================================================
     # GREETING
     # ====================================================
 
     def greet(self):
-        """Greet the user based on time of day."""
+        """Greet the user based on time of day. Only use name if authenticated."""
         hour = datetime.datetime.now().hour
-        user = self.auth.current_user or self.memory.get_last_user()
+        
+        # Use authenticated name, or 'Guest' if not verified
+        if self.auth.is_active:
+            user = self.auth.current_user
+        else:
+            user = "Guest"
 
         if hour < 12:
             greeting = "Good morning"
@@ -204,7 +244,7 @@ class JarvisBrain:
         else:
             greeting = "Good evening"
 
-        self.speak(f"{greeting}, {user}! I am Jarvis, your AI assistant. How can I help you?")
+        self.speak(f"{greeting}, {user}. How can I help you today?")
 
     # ====================================================
     # COMMAND PROCESSING (with self-control logic)
@@ -230,17 +270,13 @@ class JarvisBrain:
         if not self.auth.is_active:
             from config import FACE_AUTH_ENABLED
             if FACE_AUTH_ENABLED:
-                # Check if there are ANY registered faces
-                import os
-                from config import PROJECT_ROOT
-                faces_dir = os.path.join(PROJECT_ROOT, "registered_faces")
-                has_faces = os.path.exists(faces_dir) and len(os.listdir(faces_dir)) > 0
-                
-                if not has_faces:
+                from face_recognition_module import is_trained
+                if not is_trained():
                     self.speak("I don't have any faces registered yet. Please say 'register my face' to get started.")
                     return True
 
                 self.speak("Session expired. Re-authenticating...")
+
                 if not self.authenticate_user():
                     return True  # Don't exit, but don't execute
 
@@ -438,26 +474,28 @@ class JarvisBrain:
         self._running = True
         logger.info("JARVIS daemon started")
 
-        # Authenticate (only if users are registered)
-        import os
-        from config import PROJECT_ROOT
-        faces_dir = os.path.join(PROJECT_ROOT, "registered_faces")
-        has_faces = os.path.exists(faces_dir) and len(os.listdir(faces_dir)) > 0
-
-        if has_faces:
-            if not self.authenticate_user():
-                logger.warning("Initial authentication failed")
-                self.speak("I didn't recognize you. You can try saying 'recognize me' or say 'register my face' to start fresh.")
-        else:
-            logger.info("No faces registered yet. Skipping initial auth.")
-            self.speak("Hello! I am Jarvis. Since I don't have any faces registered yet, I am running in setup mode. Please say 'register my face' to enable security.")
-
-        # Greet
-        self.greet()
-
         # Start continuous monitoring
         logger.info("Starting continuous biometric monitoring...")
         self.start_monitor()
+
+        # Initial Authentication/Validation
+        from face_recognition_module import is_trained
+        if is_trained():
+            logger.info("Face model found. Validating user...")
+            if not self.authenticate_user():
+                logger.warning("Initial validation failed.")
+                # self.authenticate_user already handles the 'register or retry' prompt
+        else:
+            logger.info("No face data found. Prompting for registration.")
+            self.speak("System initialized. I don't have any faces registered yet. Would you like to register now?")
+            choice = self.listen()
+            if choice and ("yes" in choice.lower() or "register" in choice.lower()):
+                self._handle_face_commands("register my face")
+            else:
+                self.speak("Proceeding in Guest mode. Security restricted.")
+
+        # Greet (now uses self.auth.is_active inside)
+        self.greet()
 
         # Main loop
         while self._running:

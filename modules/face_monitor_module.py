@@ -8,7 +8,8 @@ import numpy as np
 from face_recognition_module import (
     _get_recognizer,
     USER_NAMES,
-    _draw_hud
+    _draw_hud,
+    detect_faces
 )
 
 from core.memory import get_memory
@@ -104,30 +105,9 @@ def _monitor_loop():
             gray = cv2.equalizeHist(gray)
 
             # ─────────────────────────────
-            # SAFE FACE DETECTION
+            # ROBUST FACE DETECTION (THREAD-SAFE)
             # ─────────────────────────────
-            faces = []
-
-            try:
-
-                h, w = gray.shape[:2]
-
-                if h >= 50 and w >= 50:
-
-                    faces = face_cascade.detectMultiScale(
-                        gray,
-                        scaleFactor=1.1,
-                        minNeighbors=5,
-                        minSize=(50, 50)
-                    )
-
-            except cv2.error as e:
-
-                logger.warning(
-                    f"Face monitor detection crash avoided: {e}"
-                )
-
-                continue
+            faces = detect_faces(gray, face_cascade)
 
             # ─────────────────────────────
             # FACE RECOGNITION

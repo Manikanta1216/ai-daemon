@@ -1,302 +1,68 @@
 [
   {
-    "command": "install ps youtube",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778174533.2290199
-  },
-  {
-    "command": "install ps util",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778174551.7952502
-  },
-  {
-    "command": "sari sari de",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175697.600651
-  },
-  {
-    "command": "gyarahavin sharif",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175712.0052302
-  },
-  {
-    "command": "authenticate me",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175727.2536683
-  },
-  {
-    "command": "open settings go to system",
-    "intent": "open_app",
-    "result": "Opening Settings",
-    "timestamp": 1778175747.4739969
-  },
-  {
-    "command": "open settings and navigate to system and bluetooth and",
+    "command": "open settings go to system turn on power saving",
     "intent": "multi_task",
-    "result": "Opening Settings, and i don't have detailed information on that right now, but i can help you search the web for it. just say 'search' followed by your question.",
-    "timestamp": 1778175774.581268
+    "result": "Automation workflow for Settings completed successfully.",
+    "timestamp": 1778231924.108071
   },
   {
-    "command": "i will give instructions follow concurrently one by one",
-    "intent": "chat",
-    "result": "I'm ready to follow your instructions, go ahead with the first one.",
-    "timestamp": 1778175793.9930732
-  },
-  {
-    "command": "first open settings",
-    "intent": "open_app",
-    "result": "Please tell me which application to open.",
-    "timestamp": 1778175804.9409
-  },
-  {
-    "command": "open settings go to system go to battery",
+    "command": "accommodation",
     "intent": "get_info",
-    "result": "Battery check requires psutil to be installed.",
-    "timestamp": 1778175814.919723
-  },
-  {
-    "command": "install that version",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175827.6195438
-  },
-  {
-    "command": "how to install that version",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175851.9488213
-  },
-  {
-    "command": "install psutil",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175878.7335713
-  },
-  {
-    "command": "how to install psutil",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175893.3034306
-  },
-  {
-    "command": "check my device storage",
-    "intent": "chat",
-    "result": "I'm a large language model, I don't have direct access to your device, but I can guide you on how to check your storage. You can usually find this information in your device's settings under \"storage\" or \"device storage\" depending on your device type.",
-    "timestamp": 1778175921.2739255
-  },
-  {
-    "command": "turn on bluetooth",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778175943.2618275
-  },
-  {
-    "command": "open vs code and create a file named 1.1",
-    "intent": "multi_task",
-    "result": "Opening VS Code, and i don't have detailed information on that right now, but i can help you search the web for it. just say 'search' followed by your question.",
-    "timestamp": 1778175971.0825274
-  },
-  {
-    "command": "get me",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176471.688025
-  },
-  {
-    "command": "riya kant academy",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176487.2989275
-  },
-  {
-    "command": "riyad and get me",
-    "intent": "multi_task",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question., and i don't have detailed information on that right now, but i can help you search the web for it. just say 'search' followed by your question.",
-    "timestamp": 1778176510.6181657
-  },
-  {
-    "command": "recognise me",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176533.848522
-  },
-  {
-    "command": "open youtube",
-    "intent": "open_website",
-    "result": "Opening Youtube",
-    "timestamp": 1778176547.9917204
-  },
-  {
-    "command": "open youtube search for the best telugu songs and play the telugu",
-    "intent": "multi_task",
-    "result": "Automation workflow for youtube.com completed successfully.",
-    "timestamp": 1778176582.665276
-  },
-  {
-    "command": "hello",
-    "intent": "chat",
-    "result": "Hello! How can I help you today?",
-    "timestamp": 1778176599.6250162
-  },
-  {
-    "command": "ek thalapathy",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176618.9980235
-  },
-  {
-    "command": "open youtube",
-    "intent": "open_website",
-    "result": "Opening Youtube",
-    "timestamp": 1778176637.3829224
+    "result": "I don't have info about 'accommodation'.",
+    "timestamp": 1778231935.7588358
   },
   {
     "command": "jarvis",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176651.060383
+    "intent": "multi_task",
+    "result": "Opening Task Manager, and unknown system action: kill_process. available: shutdown, restart, lock, sleep.",
+    "timestamp": 1778341128.3557017
   },
   {
-    "command": "hello  why are you why you rate limited",
+    "command": "sardar wala",
     "intent": "chat",
-    "result": "I'm doing great, thank you for asking! How can I help you?",
-    "timestamp": 1778176703.1116965
+    "result": "It seems like you're referring to something related to \"Sardar,\" which is a term used in India and other parts of South Asia. Could you please provide more context so I can better understand and assist you?",
+    "timestamp": 1778341227.1955156
   },
   {
-    "command": "jarvis",
+    "command": "chuda chudi",
     "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176725.0059314
+    "result": "It seems like you're referencing a term from Indian culture, possibly related to a traditional game or activity. Could you provide more context so I can better understand and assist you?",
+    "timestamp": 1778341262.7922933
   },
   {
-    "command": "authenticate me",
-    "intent": "chat",
-    "result": "To authenticate you, I'll need your username and password. Please enter your credentials so I can verify your identity.",
-    "timestamp": 1778176955.1384022
-  },
-  {
-    "command": "recognise me",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778176982.3072314
-  },
-  {
-    "command": "jarvis",
-    "intent": "chat",
-    "result": "I don't have detailed information on that right now, but I can help you search the web for it. Just say 'search' followed by your question.",
-    "timestamp": 1778177009.854222
-  },
-  {
-    "command": "eyebrow blood group",
+    "command": "register meaning",
     "intent": "get_info",
-    "result": "I don't have info about 'eyebrow blood group'.",
-    "timestamp": 1778212872.107514
+    "result": "I don't have info about 'register meaning'.",
+    "timestamp": 1778341297.2096517
   },
   {
-    "command": "welcome back song",
-    "intent": "play_media",
-    "result": "Playing welcome back song",
-    "timestamp": 1778214232.203268
-  },
-  {
-    "command": "prema ki surat",
+    "command": "fish can you want english",
     "intent": "multi_task",
-    "result": "Automation workflow for https://www.google.com/search completed successfully.",
-    "timestamp": 1778214257.0302203
+    "result": "Automation workflow for https://www.google.com/search?q=fish+in+english completed successfully.",
+    "timestamp": 1778341441.7386303
   },
   {
-    "command": "create a new folder named jar",
-    "intent": "file_operation",
-    "result": "Unknown file operation: create",
-    "timestamp": 1778214284.6433277
-  },
-  {
-    "command": "creativity of the following",
+    "command": "open settings go to system program",
     "intent": "multi_task",
-    "result": "Automation workflow for https://www.google.com/search?q=creativity completed successfully.",
-    "timestamp": 1778214341.7394106
+    "result": "Automation workflow for Settings completed successfully.",
+    "timestamp": 1778341481.9060028
   },
   {
-    "command": "exit",
-    "intent": "exit",
-    "result": "Goodbye",
-    "timestamp": 1778214358.3846922
-  },
-  {
-    "command": "40000",
-    "intent": "chat",
-    "result": "It looks like you've entered a number, 40,000. Is there something specific you'd like to do with this number or would you like some information related to it?",
-    "timestamp": 1778216228.9417784
-  },
-  {
-    "command": "jarvis are you there",
+    "command": "are you there",
     "intent": "chat",
     "result": "I'm here. How can I help?",
-    "timestamp": 1778216243.9193866
+    "timestamp": 1778392079.5028872
   },
   {
-    "command": "open google and search for the prasad",
-    "intent": "multi_task",
-    "result": "Automation workflow for google.com completed successfully.",
-    "timestamp": 1778216263.2328074
-  },
-  {
-    "command": "andhra pradesh",
+    "command": "ujjain temple",
     "intent": "get_info",
-    "result": "I don't have info about 'andhra pradesh'.",
-    "timestamp": 1778216278.7139263
+    "result": "I don't have info about 'ujjain temple'.",
+    "timestamp": 1778393190.8545873
   },
   {
-    "command": "delete my registration",
-    "intent": "file_operation",
-    "result": "Please specify a file name.",
-    "timestamp": 1778216289.7081068
-  },
-  {
-    "command": "are you bought are you bought",
-    "intent": "chat",
-    "result": "I'm an AI assistant, and I'm here to help you with any questions or tasks you have. I'm not something that can be bought or sold, I exist to provide information and assist with your needs.",
-    "timestamp": 1778216305.8508432
-  },
-  {
-    "command": "go to settings and turn on power sa",
+    "command": "this is a potential danger reaction are used to continue",
     "intent": "multi_task",
-    "result": "Automation workflow for Settings completed successfully.",
-    "timestamp": 1778216334.5691278
-  },
-  {
-    "command": "go to settings type power saving mode turn on power sa",
-    "intent": "multi_task",
-    "result": "Automation workflow for Settings completed successfully.",
-    "timestamp": 1778216364.0963445
-  },
-  {
-    "command": "open settings go to system",
-    "intent": "multi_task",
-    "result": "Automation workflow for Settings completed successfully.",
-    "timestamp": 1778216404.8798966
-  },
-  {
-    "command": "open settings go to system turn on power sa",
-    "intent": "multi_task",
-    "result": "Automation workflow for Settings completed successfully.",
-    "timestamp": 1778216444.6279056
-  },
-  {
-    "command": "mahavir chandrashekhar roaches",
-    "intent": "search",
-    "result": "Searching Google for: mahavir chandrashekhar roaches",
-    "timestamp": 1778216454.9583745
-  },
-  {
-    "command": "indusind",
-    "intent": "get_info",
-    "result": "I don't have info about 'indusind'.",
-    "timestamp": 1778216473.6571705
+    "result": "Unknown system action: volume. Available: shutdown, restart, lock, sleep., Opening Settings, and opening emergency-contact-info.com",
+    "timestamp": 1778393251.2053678
   }
 ]

@@ -11,6 +11,7 @@ Features:
   - Structured return format
   - Camera warm-up stabilization
   - Debug logging for detection rate diagnostics
+  - Helper to check training status
 """
 
 import cv2
@@ -20,8 +21,12 @@ import logging
 import random
 import numpy as np
 from pathlib import Path
+import threading
 
 logger = logging.getLogger("jarvis.face")
+
+# Thread safety lock for OpenCV operations
+_face_lock = threading.Lock()
 
 # ============================================
 # CONFIGURATION
@@ -70,8 +75,6 @@ def _load_config():
 
 
 # ============================================
-# USER ID <-> NAME MAPPING
-# ============================================
 import json
 _USERS_FILE = os.path.join(os.path.dirname(__file__), "users.json")
 
@@ -83,7 +86,7 @@ def _load_user_names():
                 return {int(k): v for k, v in json.load(f).items()}
         except Exception as e:
             logger.error(f"Error loading users.json: {e}")
-    return {1: "Manikanta"}
+    return {}
 
 def _save_user_names(mapping):
     """Save user mapping to JSON file."""
@@ -94,6 +97,7 @@ def _save_user_names(mapping):
         logger.error(f"Error saving users.json: {e}")
 
 USER_NAMES = _load_user_names()
+
 
 def get_user_name(user_id: int) -> str:
     """Get user name from ID, fallback to 'User_{id}'."""
@@ -115,32 +119,39 @@ _recognizer = None
 _face_cascade = None
 
 
+def is_trained() -> bool:
+    """Check if the face recognition model has been trained."""
+    _load_config()
+    return os.path.exists(_TRAINER_PATH)
+
+
 def _get_recognizer():
-    """Load the LBPH face recognizer (lazy singleton)."""
+    """Load the LBPH face recognizer (lazy singleton). Thread-safe."""
     global _recognizer, _face_cascade
     _load_config()
 
-    if _recognizer is None:
-        if not os.path.exists(_TRAINER_PATH):
-            logger.error(f"Trainer model not found: {_TRAINER_PATH}")
-            raise FileNotFoundError(
-                f"Face model not found at {_TRAINER_PATH}. "
-                "Run 'Face Recognition/Model Trainer.py' first."
-            )
+    with _face_lock:
+        if _recognizer is None:
+            if not os.path.exists(_TRAINER_PATH):
+                logger.error(f"Trainer model not found: {_TRAINER_PATH}")
+                raise FileNotFoundError(
+                    f"Face model not found at {_TRAINER_PATH}. "
+                    "Run 'Face Recognition/Model Trainer.py' first."
+                )
 
-        _recognizer = cv2.face.LBPHFaceRecognizer_create()
-        _recognizer.read(_TRAINER_PATH)
-        logger.info(f"Loaded face model: {_TRAINER_PATH}")
+            _recognizer = cv2.face.LBPHFaceRecognizer_create()
+            _recognizer.read(_TRAINER_PATH)
+            logger.info(f"Loaded face model: {_TRAINER_PATH}")
 
-    if _face_cascade is None:
-        if not os.path.exists(_CASCADE_PATH):
-            # Try OpenCV built-in
-            _face_cascade = cv2.CascadeClassifier(
-                cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-            )
-        else:
-            _face_cascade = cv2.CascadeClassifier(_CASCADE_PATH)
-        logger.info("Face cascade classifier loaded")
+        if _face_cascade is None:
+            if not os.path.exists(_CASCADE_PATH):
+                # Try OpenCV built-in
+                _face_cascade = cv2.CascadeClassifier(
+                    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+                )
+            else:
+                _face_cascade = cv2.CascadeClassifier(_CASCADE_PATH)
+            logger.info("Face cascade classifier loaded")
 
     return _recognizer, _face_cascade
 
@@ -196,52 +207,60 @@ def _non_max_suppression(boxes, overlap_thresh=0.4):
     return [tuple(row) for row in result]
 
 
+def detect_faces(gray, face_cascade=None):
+    """
+    Public thread-safe face detection with robustness.
+    """
+    if face_cascade is None:
+        _, face_cascade = _get_recognizer()
+    return _detect_faces_robust(gray, face_cascade)
+
+
 def _detect_faces_robust(gray, face_cascade):
     """
     Attempt face detection with multiple scaleFactor values for robustness.
-    Prevents OpenCV getScaleData crashes.
+    Prevents OpenCV getScaleData crashes using thread locks and validation.
     """
 
-    for scale in [1.1, 1.2, 1.3]:
+    if gray is None or gray.size == 0:
+        return []
 
-        try:
+    h, w = gray.shape[:2]
+    if h < 50 or w < 50:
+        return []
 
-            if gray is None:
-                continue
+    # Lighting normalization
+    gray = cv2.equalizeHist(gray)
 
-            if gray.size == 0:
-                continue
-
-            h, w = gray.shape[:2]
-
-            if h < 50 or w < 50:
-                continue
-
-            gray = cv2.equalizeHist(gray)
-
-            faces = face_cascade.detectMultiScale(
-                gray,
-                scaleFactor=scale,
-                minNeighbors=5,
-                minSize=(50, 50),
-            )
-
-            if len(faces) > 0:
-
-                filtered = _non_max_suppression(
-                    faces,
-                    overlap_thresh=0.4
+    # Use a lock to prevent concurrent access to the same CascadeClassifier instance
+    # which is known to cause crashes in OpenCV's C++ core.
+    with _face_lock:
+        for scale in [1.1, 1.2, 1.3]:
+            try:
+                faces = face_cascade.detectMultiScale(
+                    gray,
+                    scaleFactor=scale,
+                    minNeighbors=5,
+                    minSize=(50, 50),
                 )
 
-                return filtered
+                if len(faces) > 0:
+                    filtered = _non_max_suppression(
+                        faces,
+                        overlap_thresh=0.4
+                    )
+                    return filtered
 
-        except cv2.error as e:
-
-            logger.warning(
-                f"detectMultiScale crash avoided: {e}"
-            )
-
-            continue
+            except cv2.error as e:
+                logger.warning(
+                    f"detectMultiScale crash avoided: {e}"
+                )
+                continue
+            except Exception as e:
+                logger.warning(
+                    f"Unexpected detection error: {e}"
+                )
+                continue
 
     return []
     # for scale in [1.1, 1.2, 1.3]:
@@ -517,12 +536,12 @@ def authenticate() -> dict:
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
-    # ── Camera warm-up: discard first 15 frames over ~2.5 seconds ──
+    # ── Camera warm-up: discard initial frames for auto-exposure ──
     logger.info("Camera warm-up: discarding initial frames...")
-    warmup_frames = 60
+    warmup_frames = 15
     for _ in range(warmup_frames):
         cap.read()
-        time.sleep(0.15)
+        time.sleep(0.05)
     logger.info(f"Camera warm-up complete ({warmup_frames} frames discarded)")
 
     try:
@@ -727,7 +746,7 @@ def live_register_face(name: str) -> bool:
         if not ret: break
         
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+        faces = detect_faces(gray, face_cascade)
         
         for (x, y, w, h) in faces:
             count += 1
@@ -787,7 +806,7 @@ def train_model() -> bool:
             img = Image.open(path).convert('L')
             img_np = np.array(img, 'uint8')
             
-            faces = face_cascade.detectMultiScale(img_np)
+            faces = detect_faces(img_np, face_cascade)
             for (x, y, w, h) in faces:
                 face_samples.append(img_np[y:y+h, x:x+w])
                 ids.append(user_id)
