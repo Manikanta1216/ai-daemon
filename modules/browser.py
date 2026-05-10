@@ -1,6 +1,6 @@
 """
 JARVIS AI — Browser Module
-Handles opening websites, searching, and web navigation.
+
 """
 
 import logging
