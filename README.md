@@ -1,6 +1,6 @@
 # ZENITH
 
-## Autonomous Cognitive Desktop Intelligence Platform
+## Zero-Latency Engineered Network for Intuitive Task Handling
 
 <div align="center">
 
