@@ -10,7 +10,7 @@
   "intent_frequency": {
     "multi_task": 5,
     "get_info": 3,
-    "chat": 3
+    "chat": 4
   },
   "last_user": "manikanta"
 }

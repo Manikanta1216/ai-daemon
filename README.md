@@ -1,284 +1,530 @@
-# J.A.R.V.I.S — AI Desktop Assistant
+# ZENITH
+
+## Autonomous Cognitive Desktop Intelligence Platform
 
 <div align="center">
 
-<img src="jarvis1.jpg" alt="JARVIS Banner" width="700"/>
+<img src="images/zenith-banner.jpg" width="1000"/>
 
-### Your Personal AI-Powered Desktop Assistant
+### Next-Generation AI Desktop Automation & Cognitive Computing System
 
-Voice-controlled automation, face recognition, OCR, WhatsApp messaging, media control, system management, and AI conversation — all in one assistant.
+---
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge\&logo=python)
+![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)
+![Computer Vision](https://img.shields.io/badge/Computer-Vision-green?style=for-the-badge)
+![Automation](https://img.shields.io/badge/Desktop-Automation-black?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-Modular-orange?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-Enhanced-red?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+
+---
+
+### “Transforming traditional desktop automation into intelligent cognitive interaction.”
 
 </div>
 
 ---
 
-# Features
+# Overview
 
-* 🎙️ Voice Assistant with speech recognition
-* 🧠 AI-powered conversation system
-* 👤 Face Recognition Authentication
-* 📷 OCR (Optical Character Recognition)
-* 🌐 Browser Automation
-* 📩 Email Sending
-* 💬 WhatsApp Automation
-* 🎵 Media Controls
-* 🖥️ System Controls
-* 📰 Latest News Fetching
-* 📍 Location Detection
-* 😂 Joke Generator
-* ☁️ Weather Information
-* 📺 YouTube Downloader
-* 🧠 Memory Management System
+ZENITH is a high-performance AI-powered desktop intelligence platform engineered for autonomous interaction, real-time automation, adaptive memory processing, and computer vision integration.
+
+Unlike traditional assistants, ZENITH operates as a modular cognitive system capable of:
+
+* Understanding natural language
+* Executing intelligent workflows
+* Automating desktop operations
+* Interacting through voice
+* Performing biometric authentication
+* Processing visual information
+* Maintaining contextual memory
+
+ZENITH combines AI orchestration, automation engineering, and cognitive computing into a unified desktop intelligence framework.
+
+---
+
+# Core Capabilities
+
+<div align="center">
+
+| AI Intelligence   | Automation         | Computer Vision       | Productivity          |
+| ----------------- | ------------------ | --------------------- | --------------------- |
+| Conversational AI | Desktop Automation | Face Recognition      | Email Automation      |
+| Intent Detection  | Browser Control    | OCR Processing        | Workflow Automation   |
+| Context Memory    | App Management     | Identity Verification | Information Retrieval |
+| Dynamic Responses | System Commands    | Visual Processing     | Smart Utilities       |
+
+</div>
+
+---
+
+# System Architecture
+
+```text
+                                     ┌──────────────────────┐
+                                     │      USER INPUT      │
+                                     │ Voice / Text / Face  │
+                                     └──────────┬───────────┘
+                                                │
+                           ┌────────────────────┴────────────────────┐
+                           │                                         │
+                  ┌────────▼────────┐                       ┌────────▼────────┐
+                  │ Speech Engine   │                       │ Vision Engine   │
+                  │ STT / TTS       │                       │ OCR / Face AI   │
+                  └────────┬────────┘                       └────────┬────────┘
+                           │                                         │
+                           └────────────────┬────────────────────────┘
+                                            │
+                                 ┌──────────▼──────────┐
+                                 │ Intent Classifier   │
+                                 │ NLP Understanding   │
+                                 └──────────┬──────────┘
+                                            │
+                          ┌─────────────────┼─────────────────┐
+                          │                 │                 │
+                 ┌────────▼───────┐ ┌──────▼────────┐ ┌──────▼────────┐
+                 │ Task Resolver  │ │ Memory Engine │ │ AI Brain Core │
+                 │ Command Router │ │ Context Store │ │ LLM Interface │
+                 └────────┬───────┘ └──────┬────────┘ └──────┬────────┘
+                          │                 │                 │
+                          └─────────────────┼─────────────────┘
+                                            │
+                               ┌────────────▼────────────┐
+                               │ Execution Orchestrator │
+                               │ Automation Controller  │
+                               └────────────┬────────────┘
+                                            │
+      ┌─────────────────────────────────────┼─────────────────────────────────────┐
+      │                                     │                                     │
+┌─────▼─────┐                     ┌─────────▼────────┐                  ┌────────▼────────┐
+│ Browser   │                     │ System Controls  │                  │ Communication   │
+│ Automation│                     │ Power / Apps     │                  │ Email / Message │
+└───────────┘                     └──────────────────┘                  └─────────────────┘
+```
+
+---
+
+# Advanced Features
+
+# 🎙️ Intelligent Voice Interaction
+
+* Real-time speech recognition
+* Human-like voice responses
+* Wake-word activation
+* Multi-command understanding
+* Context-aware conversations
+* Dynamic response generation
+
+---
+
+# 🧠 AI Cognitive Engine
+
+ZENITH integrates advanced AI reasoning pipelines for:
+
+* Intent classification
+* Context retention
+* Conversational processing
+* Decision making
+* Intelligent routing
+* Workflow orchestration
+
+### AI Processing Pipeline
+
+```text
+Input
+  ↓
+Speech/Text Processing
+  ↓
+Intent Detection
+  ↓
+Context Mapping
+  ↓
+Decision Engine
+  ↓
+Task Execution
+  ↓
+Response Generation
+```
+
+---
+
+# 👤 Facial Authentication System
+
+A real-time biometric authentication layer powered by computer vision.
+
+### Features
+
+* Live face recognition
+* Identity verification
+* Authentication sessions
+* Adaptive confidence matching
+* Secure profile management
+
+### Authentication Workflow
+
+```text
+Camera Feed
+     ↓
+Face Detection
+     ↓
+Feature Encoding
+     ↓
+Recognition Engine
+     ↓
+Identity Validation
+```
+
+---
+
+# 📷 OCR & Visual Intelligence
+
+Extracts structured information from visual data.
+
+### Supported Inputs
+
+* Images
+* Screenshots
+* Camera feeds
+* Documents
+* Live visual streams
+
+### OCR Pipeline
+
+```text
+Image Input
+    ↓
+Preprocessing
+    ↓
+Text Localization
+    ↓
+OCR Recognition
+    ↓
+Structured Output
+```
+
+---
+
+# ⚡ Autonomous Automation Engine
+
+ZENITH can autonomously interact with the operating system.
+
+### Automation Capabilities
+
+* Application launching
+* File management
+* Browser interaction
+* Keyboard automation
+* Mouse automation
+* Media control
+* Process management
+* Workflow execution
+
+---
+
+# 🌐 Browser Intelligence Layer
+
+* Smart browsing
+* Automated searching
+* Website interaction
+* Dynamic navigation
+* Information extraction
+* Tab management
+
+---
+
+# 💬 Communication System
+
+### Messaging Automation
+
+* Email workflows
+* WhatsApp automation
+* Notification management
+* Automated communication pipelines
+
+---
+
+# 🧠 Adaptive Memory Engine
+
+ZENITH maintains contextual intelligence across interactions.
+
+| Memory Layer     | Function                    |
+| ---------------- | --------------------------- |
+| Session Memory   | Temporary context retention |
+| User Memory      | Personalized adaptation     |
+| Task Memory      | Workflow persistence        |
+| AI Context Store | Conversation continuity     |
 
 ---
 
 # Project Structure
 
-```bash id="7x2qv7"
+```bash
+ZENITH/
+│
 ├── ai/
+│   ├── brain/
+│   ├── conversation/
+│   ├── reasoning/
+│   └── response_engine/
+│
 ├── core/
+│   ├── executor/
+│   ├── orchestrator/
+│   ├── router/
+│   └── engine/
+│
 ├── modules/
-├── security/
+│   ├── automation/
+│   ├── browser/
+│   ├── communication/
+│   ├── media/
+│   ├── system/
+│   └── utilities/
+│
+├── vision/
+│   ├── face_recognition/
+│   ├── OCR/
+│   └── processing/
+│
 ├── memory/
-├── Face Recognition/
-├── images/
+│   ├── context/
+│   ├── sessions/
+│   └── storage/
+│
+├── security/
+│   ├── authentication/
+│   ├── permissions/
+│   └── monitoring/
+│
+├── assets/
 ├── samples/
-├── registered_faces/
-├── jarvis.py
+├── registered_profiles/
+│
+├── main.py
 ├── OCR.py
 ├── requirements.txt
+├── .env
 └── README.md
 ```
 
 ---
 
-# Technologies Used
+# Technology Stack
 
-* Python 3.8+
+# Core Technologies
+
+* Python 3.10+
+* Groq API
+* Gemini API
 * OpenCV
 * SpeechRecognition
 * pyttsx3
-* Groq API
-* OCR
-* Face Recognition
-* Automation Modules
+* PyAutoGUI
+* psutil
 
 ---
 
-# Requirements
+# AI & NLP
 
-## Python Modules
+* Intent Classification
+* Conversational Processing
+* Context Management
+* Dynamic Response Generation
 
-```txt id="17j7hq"
-datetime
-os
-pyttsx3
-wikipedia
-speech_recognition
-webbrowser
-sys
-smtplib
-requests
-json
-difflib
-geocoder
-pyjokes
-psutil
-pyautogui
-opencv-python
-```
+---
+
+# Computer Vision
+
+* Face Recognition
+* OCR Processing
+* Live Camera Interaction
+* Visual Analysis
 
 ---
 
 # Installation
 
-## 1. Clone the Repository
+# 1. Clone Repository
 
-```bash id="t3h4hm"
+```bash
 git clone https://github.com/Manikanta1216/ai-daemon.git
+
 cd ai-daemon
 ```
 
 ---
 
-## 2. Create Virtual Environment
+# 2. Create Virtual Environment
 
-### Windows
+## Windows
 
-```bash id="d1mq5q"
+```bash
 python -m venv venv
+
 venv\Scripts\activate
 ```
 
-### Linux / macOS
+## Linux / macOS
 
-```bash id="9hwtb0"
+```bash
 python3 -m venv venv
+
 source venv/bin/activate
 ```
 
 ---
 
-## 3. Install Dependencies
+# 3. Install Dependencies
 
-```bash id="6t3m65"
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-# PyAudio Installation (Windows)
-
-PyAudio sometimes fails to install directly on Windows.
-
-### Option 1 — Recommended
-
-Download the compatible `.whl` file from:
-
-[PyAudio Windows Wheels](https://www.lfd.uci.edu/~gohlke/pythonlibs/?utm_source=chatgpt.com#pyaudio)
-
-Then install it:
-
-```bash id="agj2d7"
-pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl
-```
-
-After that:
-
-```bash id="2wt8vn"
-pip install -r requirements.txt
-```
-
----
-
-# Environment Variables
+# Environment Configuration
 
 Create a `.env` file in the root directory.
 
-Example:
+```env
+PRIMARY_AI_PROVIDER=groq
 
-```env id="3w0f38"
-GROQ_API_KEY=your_groq_api_key
-EMAIL=your_email
-EMAIL_PASSWORD=your_password
+GROQ_API_KEY=
+GEMINI_API_KEY=
+
+GROQ_MODEL=llama-3.3-70b-versatile
+GEMINI_MODEL=gemini-2.0-flash
+
+ACTIVATION_PHRASE=zenith
+
+FACE_AUTHENTICATION_ENABLED=true
+
+SMTP_EMAIL=
+SMTP_PASSWORD=
 ```
 
 ---
 
-# Running J.A.R.V.I.S
+# Running ZENITH
 
-```bash id="yvq2o7"
-python jarvis.py
+```bash
+python main.py
 ```
 
 ---
 
 # Face Recognition Setup
 
-## Generate Face Samples
+## Generate Samples
 
-```bash id="lnq0hl"
-python "Face Recognition/Sample generator.py"
+```bash
+python vision/SampleGenerator.py
 ```
 
-## Train the Model
+## Train Recognition Model
 
-```bash id="q6l7to"
-python "Face Recognition/Model Trainer.py"
+```bash
+python vision/ModelTrainer.py
 ```
 
 ---
 
-# OCR Usage
+# OCR Module
 
-Run OCR module:
-
-```bash id="4j4o8u"
+```bash
 python OCR.py
 ```
 
 ---
 
-# Modules Included
+# Security Configuration
 
-| Module                   | Description        |
-| ------------------------ | ------------------ |
-| `automation_module.py`   | Desktop automation |
-| `browser.py`             | Browser controls   |
-| `email_module.py`        | Send emails        |
-| `whatsapp_module.py`     | WhatsApp messaging |
-| `media_module.py`        | Media controls     |
-| `system_module.py`       | System operations  |
-| `face_monitor_module.py` | Face monitoring    |
+Recommended `.gitignore`
 
----
-
-# Screenshots
-
-## Interface
-
-<img src="images/jarvis.jpg" width="700"/>
-
-## Face Recognition
-
-<img src="images/face-600x900.png" width="500"/>
-
----
-
-# Security Notes
-
-* Never upload real API keys
-* Keep `.env` in `.gitignore`
-* Do not commit virtual environments
-* Remove personal images/data before publishing
-
-Recommended `.gitignore`:
-
-```gitignore id="x2v8k0"
+```gitignore
 venv/
-venv_new/
 .env
 __pycache__/
 *.pyc
 ```
 
+### Security Best Practices
+
+* Never expose API keys
+* Remove sensitive datasets
+* Use environment variables
+* Enable safe execution mode
+* Avoid committing personal files
+
 ---
 
-# Future Improvements
+# Engineering Principles
+
+ZENITH is engineered around:
+
+* Modular architecture
+* Scalable systems
+* Low-latency execution
+* Cognitive interaction
+* Autonomous workflows
+* Extensible design patterns
+
+---
+
+# Future Roadmap
+
+## Planned Enhancements
 
 * GUI Dashboard
-* Multi-language support
-* Better AI memory
-* Mobile integration
-* Smart home controls
-* Plugin architecture
+* Local LLM Integration
+* Multi-Agent Coordination
+* Plugin Ecosystem
+* Smart Home Integration
+* Autonomous Planning Engine
+* Real-Time Analytics
+* Neural Memory System
+* Cross-Device Synchronization
+
+---
+
+# Research Domains
+
+* Artificial Intelligence
+* Human Computer Interaction
+* Cognitive Computing
+* Desktop Automation
+* Computer Vision
+* Intelligent Systems
+* Voice Computing
 
 ---
 
 # Contributing
 
-Contributions are welcome.
+Contributions are welcome from developers, researchers, and automation engineers.
 
-1. Fork the repository
-2. Create a new branch
-3. Commit changes
-4. Open a Pull Request
+```bash
+1. Fork Repository
+2. Create Feature Branch
+3. Commit Changes
+4. Push Updates
+5. Open Pull Request
+```
 
 ---
 
 # License
 
-This project is licensed under the MIT License.
+MIT License © ZENITH Labs
 
 ---
 
-# Author
+# Developer
 
-## 👨‍💻 ZENTIH 
+## 👨‍💻 ZENITH Labs
 
-* AI Enthusiast
-* Python Developer
-* Automation Engineer
+### AI Systems • Cognitive Automation • Intelligent Computing
 
 GitHub:
 
@@ -286,11 +532,15 @@ GitHub:
 
 ---
 
-# Support
+# Final Statement
 
-If you like this project:
+> ZENITH represents the evolution of desktop interaction —
+> combining AI reasoning, automation engineering, and cognitive computing into one intelligent autonomous platform.
 
-⭐ Star the repository
-🍴 Fork the project
-🐛 Report issues
-🚀 Contribute improvements
+<div align="center">
+
+# ⚡ ZENITH
+
+## Autonomous Intelligence For The Modern Desktop
+
+</div>
