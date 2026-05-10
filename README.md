@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="images/zenith-banner.jpg" width="1000"/>
+<img src="images/zenith-banner.png" width="1000"/>
 
 ### Next-Generation AI Desktop Automation & Cognitive Computing System
 
